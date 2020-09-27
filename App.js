@@ -20,6 +20,11 @@ app.get('/restaurants/:mealtype', (req,res) => {
         sort_cost = {"cost": Number(req.query.hTol)}
     }
 
+    //Filter based on city
+    if(req.query.city) {
+        query = {"type.mealtype":req.params.mealtype, "city":req.query.city};
+    }
+
     db.collection('restaurant').find(query).sort(sort_cost).toArray((err,result) => {
         if(err) throw err;
         res.send(result);

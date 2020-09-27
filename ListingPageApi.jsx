@@ -17,11 +17,16 @@ class ListingPageApi extends Component {
         this.setState({restaurantList:data})
     }
 
+    handleCity = (data) => {
+        this.setState({restaurantList:data}) 
+    }
+
     render() { 
         return (
             <div className="row">
                 <div className="col-md-2 filter mt-4 shadow">
                     <div className="filterHeading mt-3 ml-4">Filters</div>
+                    <CityFilter datapercity={data => {this.handleCity(data)}}></CityFilter>
                     <div className="filterSort">
                         <CitySort sortprice={(data) => {this.handleSortprice(data)}}></CitySort>
                     </div>
